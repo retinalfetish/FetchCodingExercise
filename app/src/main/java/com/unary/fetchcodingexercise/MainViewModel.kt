@@ -18,22 +18,27 @@ class MainViewModel : ViewModel() {
     private val _list = mutableStateOf<List<Person>>(emptyList())
     val list: State<List<Person>> = _list
 
-    private val _loading = mutableStateOf(false)
-    val loading: State<Boolean> = _loading
+    private val _isLoading = mutableStateOf(false)
+    val isLoading: State<Boolean> = _isLoading
+
+    private val _onError = mutableStateOf(false)
+    val onError: State<Boolean> = _onError
 
     init {
         viewModelScope.launch {
-            _loading.value = true
+            _isLoading.value = true
 
             try {
-                _list.value = HiringApi.apiService.getList().toMutableStateList()
+                _list.value = HiringApi.apiService.getList()
                     .filter { !it.name.isNullOrEmpty() }
                     .sortedWith(compareBy<Person> { it.listId }.thenBy { it.name })
+                    .toMutableStateList()
             } catch (e: Exception) {
                 Log.e("Main", e.message.toString())
+                _onError.value = true
             }
 
-            _loading.value = false
+            _isLoading.value = false
         }
     }
 }

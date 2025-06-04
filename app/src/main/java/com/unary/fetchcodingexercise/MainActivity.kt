@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.unary.fetchcodingexercise.ui.HiringScreen
@@ -30,8 +32,11 @@ class MainActivity : ComponentActivity() {
                     contentAlignment = Alignment.Center
                 ) {
                     HiringScreen(list = viewModel.list.value)
-                    if (viewModel.loading.value) {
+                    if (viewModel.isLoading.value) {
                         CircularProgressIndicator(modifier = Modifier.width(64.dp))
+                    }
+                    if (viewModel.onError.value) {
+                        Text(text = stringResource(R.string.main_error_message))
                     }
                 }
             }
