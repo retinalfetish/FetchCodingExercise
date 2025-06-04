@@ -18,8 +18,13 @@ class MainViewModel : ViewModel() {
     private val _list = mutableStateOf<List<Person>>(emptyList())
     val list: State<List<Person>> = _list
 
+    private val _loading = mutableStateOf(false)
+    val loading: State<Boolean> = _loading
+
     init {
         viewModelScope.launch {
+            _loading.value = true
+
             try {
                 _list.value = HiringApi.apiService.getList().toMutableStateList()
                     .filter { !it.name.isNullOrEmpty() }
@@ -27,6 +32,8 @@ class MainViewModel : ViewModel() {
             } catch (e: Exception) {
                 Log.e("Main", e.message.toString())
             }
+
+            _loading.value = false
         }
     }
 }
