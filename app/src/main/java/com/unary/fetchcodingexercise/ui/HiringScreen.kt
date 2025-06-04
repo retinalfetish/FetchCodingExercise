@@ -8,12 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,7 +30,7 @@ fun HiringScreen(list: List<Person>) {
         HiringHeader()
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(list) { person ->
-                HiringRow(
+                HiringCard(
                     id = person.id,
                     listId = person.listId,
                     name = person.name.toString()
@@ -46,7 +46,7 @@ fun HiringHeader() {
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primary)
-            .padding(8.dp)
+            .padding(12.dp)
     ) {
         Text(
             modifier = Modifier.weight(0.1f),
@@ -59,7 +59,7 @@ fun HiringHeader() {
             color = MaterialTheme.colorScheme.onPrimary
         )
         Text(
-            modifier = Modifier.weight(0.4f),
+            modifier = Modifier.weight(0.2f),
             text = stringResource(R.string.hiring_name),
             color = MaterialTheme.colorScheme.onPrimary
         )
@@ -67,9 +67,20 @@ fun HiringHeader() {
 }
 
 @Composable
-fun HiringRow(id: Int, listId: Int, name: String) {
-    Column(modifier = Modifier.padding(start = 8.dp, end = 8.dp)) {
-        Row(modifier = Modifier.fillMaxWidth()) {
+fun HiringCard(id: Int, listId: Int, name: String) {
+    Card(
+        modifier = Modifier.padding(top = 4.dp, start = 4.dp, end = 4.dp),
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(
+            contentColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
             Text(
                 modifier = Modifier.weight(0.1f),
                 text = id.toString()
@@ -79,11 +90,10 @@ fun HiringRow(id: Int, listId: Int, name: String) {
                 text = listId.toString()
             )
             Text(
-                modifier = Modifier.weight(0.4f),
+                modifier = Modifier.weight(0.2f),
                 text = name
             )
         }
-        HorizontalDivider(color = Color(0x10000000), thickness = 1.dp)
     }
 }
 
