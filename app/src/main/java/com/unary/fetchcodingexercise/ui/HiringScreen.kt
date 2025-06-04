@@ -21,6 +21,9 @@ import com.unary.fetchcodingexercise.R
 import com.unary.fetchcodingexercise.domain.model.Person
 import com.unary.fetchcodingexercise.ui.theme.FetchCodingExerciseTheme
 
+/**
+ * Composable Hiring screen. It displays a header with list of Person data objects.
+ */
 @Composable
 fun HiringScreen(list: List<Person>) {
     Column {
