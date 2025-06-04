@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -47,6 +48,7 @@ fun HiringHeader() {
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primary)
             .padding(12.dp)
+            .statusBarsPadding()
     ) {
         Text(
             modifier = Modifier.weight(0.1f),
