@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * A data class used to hold the details of a single person.
+ * A data class for the details of one person.
  */
 @JsonClass(generateAdapter = true)
 data class Person(

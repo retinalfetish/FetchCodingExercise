@@ -15,12 +15,15 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel : ViewModel() {
 
+    // Filtered hiring list
     private val _list = mutableStateOf<List<Person>>(emptyList())
     val list: State<List<Person>> = _list
 
+    // Loading status indicator
     private val _isLoading = mutableStateOf(false)
     val isLoading: State<Boolean> = _isLoading
 
+    // Error status indicator
     private val _onError = mutableStateOf(false)
     val onError: State<Boolean> = _onError
 

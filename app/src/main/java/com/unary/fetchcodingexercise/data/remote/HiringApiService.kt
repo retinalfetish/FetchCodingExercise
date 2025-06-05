@@ -8,13 +8,16 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 /**
- * An interface for public Fetch Hiring API service.
+ * An interface for the Fetch hiring API.
  */
 interface HiringApiService {
     @GET("hiring.json")
     suspend fun getList(): List<Person>
 }
 
+/**
+ * Retrofit service for the Fetch hiring API.
+ */
 object HiringApi {
     private val baseUrl = "https://hiring.fetch.com/"
 

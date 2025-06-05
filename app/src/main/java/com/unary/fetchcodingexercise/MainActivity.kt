@@ -19,6 +19,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.unary.fetchcodingexercise.ui.HiringScreen
 import com.unary.fetchcodingexercise.ui.theme.FetchCodingExerciseTheme
 
+/**
+ * Main activity for the hiring application.
+ */
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.unary.fetchcodingexercise.R
@@ -23,7 +24,7 @@ import com.unary.fetchcodingexercise.domain.model.Person
 import com.unary.fetchcodingexercise.ui.theme.FetchCodingExerciseTheme
 
 /**
- * Composable Hiring screen. It displays a header with list of Person data objects.
+ * Composable Hiring screen to display a header with list.
  */
 @Composable
 fun HiringScreen(list: List<Person>) {
@@ -41,6 +42,9 @@ fun HiringScreen(list: List<Person>) {
     }
 }
 
+/**
+ * Composable header for the hiring list.
+ */
 @Composable
 fun HiringHeader() {
     Row(
@@ -68,6 +72,9 @@ fun HiringHeader() {
     }
 }
 
+/**
+ * Composable card for individual hiring entries.
+ */
 @Composable
 fun HiringCard(id: Int, listId: Int, name: String) {
     Card(
@@ -93,12 +100,17 @@ fun HiringCard(id: Int, listId: Int, name: String) {
             )
             Text(
                 modifier = Modifier.weight(0.2f),
-                text = name
+                text = name,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
 }
 
+/**
+ * Composable preview for the hiring screen.
+ */
 @Preview(showBackground = true)
 @Composable
 fun HiringScreenPreview() {
