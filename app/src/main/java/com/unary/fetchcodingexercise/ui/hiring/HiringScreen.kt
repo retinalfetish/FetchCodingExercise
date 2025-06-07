@@ -1,4 +1,4 @@
-package com.unary.fetchcodingexercise.ui
+package com.unary.fetchcodingexercise.ui.hiring
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

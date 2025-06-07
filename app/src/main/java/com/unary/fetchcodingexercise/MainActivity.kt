@@ -11,12 +11,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.unary.fetchcodingexercise.ui.HiringScreen
+import com.unary.fetchcodingexercise.ui.hiring.HiringScreen
 import com.unary.fetchcodingexercise.ui.theme.FetchCodingExerciseTheme
 
 /**
@@ -31,6 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             FetchCodingExerciseTheme {
                 val viewModel: MainViewModel = viewModel()
+                val hiringState by viewModel.hiringState.collectAsState()
 
                 Box(
                     modifier = Modifier
@@ -38,11 +41,11 @@ class MainActivity : ComponentActivity() {
                         .background(MaterialTheme.colorScheme.background),
                     contentAlignment = Alignment.Center
                 ) {
-                    HiringScreen(list = viewModel.list.value)
-                    if (viewModel.isLoading.value) {
+                    HiringScreen(list = hiringState.list)
+                    if (hiringState.isLoading) {
                         CircularProgressIndicator(modifier = Modifier.width(64.dp))
                     }
-                    if (viewModel.onError.value) {
+                    if (hiringState.isFailure) {
                         Text(text = stringResource(R.string.main_error_message))
                     }
                 }
