@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.unary.fetchcodingexercise.data.remote.HiringApi
 import com.unary.fetchcodingexercise.domain.model.Person
-import com.unary.fetchcodingexercise.ui.hiring.HiringState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -18,7 +17,7 @@ class MainViewModel : ViewModel() {
 
     // Hiring list state
     private val _hiringState = MutableStateFlow(HiringState())
-    val hiringState = _hiringState.asStateFlow()
+    val hiringState: StateFlow<HiringState> = _hiringState
 
     init {
         viewModelScope.launch {

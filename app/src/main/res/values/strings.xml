@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Fetch Coding Exercise</string>
 
-    <string name="main_error_message">Unable to load content</string>
-
     <string name="hiring_id">Id</string>
     <string name="hiring_list_id">List Id</string>
     <string name="hiring_name">Name</string>
+    <string name="hiring_error_message">Unable to load content</string>
+
 </resources>
