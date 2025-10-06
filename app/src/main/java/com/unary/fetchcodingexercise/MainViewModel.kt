@@ -1,7 +1,6 @@
 package com.unary.fetchcodingexercise
 
 import android.util.Log
-import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.unary.fetchcodingexercise.data.remote.HiringApi
@@ -28,7 +27,6 @@ class MainViewModel : ViewModel() {
                     list = HiringApi.apiService.getList()
                         .filter { !it.name.isNullOrEmpty() }
                         .sortedWith(compareBy<Person> { it.listId }.thenBy { it.name })
-                        .toMutableStateList()
                 )
             } catch (e: Exception) {
                 _hiringState.value = HiringState(isFailure = true)
